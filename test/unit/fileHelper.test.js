@@ -14,29 +14,29 @@ describe('#FileHelper', () => {
     describe('#getFileStatus', () => {
         test('it should return files statuses in correct format', async () => {
             const statMock = {
-                dev: 16777220,
-                mode: 33188,
+                dev: 2050,
+                mode: 33204,
                 nlink: 1,
-                uid: 501,
-                gid: 20,
+                uid: 1000,
+                gid: 1000,
                 rdev: 0,
                 blksize: 4096,
-                ino: 214187433,
-                size: 188188,
-                blocks: 368,
-                atimeMs: 1630702590337.3582,
-                mtimeMs: 1630702588444.2876,
-                ctimeMs: 1630702588452.0754,
-                birthtimeMs: 1630702588443.3276,
-                atime: '2021-09-03T20:56:30.337Z',
-                mtime: '2021-09-03T20:56:28.444Z',
-                ctime: '2021-09-03T20:56:28.452Z',
-                birthtime: '2021-09-03T20:56:28.443Z'
-            }
+                ino: 7735800,
+                size: 65024,
+                blocks: 128,
+                atimeMs: 1631380361416.642,
+                mtimeMs: 1631380324011.464,
+                ctimeMs: 1631380361416.6423,
+                birthtimeMs: 1631380361416.6423,
+                atime: '2021-09-11T17:12:41.417Z',
+                mtime: '2021-09-11T17:12:04.011Z',
+                ctime: '2021-09-11T17:12:41.417Z',
+                birthtime: '2021-09-11T17:12:41.417Z'
+              }
 
             const mockUser = 'tunnes'
             process.env.USER = mockUser
-            const filename = 'file.png'
+            const filename = 'file.jpg'
 
             jest.spyOn(fs.promises, fs.promises.readdir.name)
                 .mockResolvedValue([filename])
@@ -49,8 +49,8 @@ describe('#FileHelper', () => {
 
 
             const expectedResult = [
-                {
-                    size: "188 kB",
+              {
+                    size: "65 kB",
                     lastModified: statMock.birthtime,
                     owner: mockUser,
                     file: filename
